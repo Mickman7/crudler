@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import FullWidthImage from 'react-native-fullwidth-image';
+import {Button, ButtonTray} from '../UI/Button'
 
 const ModuleViewScreen = ({navigate, route}) => {
 
@@ -20,8 +21,13 @@ const ModuleViewScreen = ({navigate, route}) => {
         <Text style={styles.text}>
           {module.ModuleLeaderName} <Text style={styles.dimText}>(Module Leader)</Text>
           </Text>
-        <StatusBar style="auto" />
       </View>
+
+      <ButtonTray>
+        <Button label='Modify'/>
+        <Button label='Delete'/>
+      </ButtonTray>
+      
     </View>
   );
 }
