@@ -32,7 +32,7 @@ const ModuleListScreen = ({navigation}) => {
       {
         initialModules.map((module) => (
           // <ModuleItem module={module} onSelect={() => handleDelete(module)} />
-          <ModuleItem module={module} onSelect={() => handleSelect(module)} />
+          <ModuleItem key={module.ModuleID} module={module} onSelect={() => handleSelect(module)} />
 
         ))
       }
