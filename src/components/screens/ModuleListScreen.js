@@ -1,9 +1,11 @@
-import {ScrollView, StyleSheet, Text } from 'react-native';
+import {LogBox, ScrollView, StyleSheet, Text } from 'react-native';
 
 import Screen from '../layouts/Screen.js';
 import initialModules from '../../data/modules'
 import ModuleItem from '../../modules/ModuleItem.js'
 import { useState } from 'react';
+import Icons from '../UI/Icons.js'
+import { Button, ButtonTray, uttonTray } from '../UI/Button.js'
 
 // console.log(initialModules[0].ModuleCode)
 
@@ -12,12 +14,13 @@ import { useState } from 'react';
 
 
 
-
 const ModuleListScreen = ({navigation}) => {
   const [modules, setModules] = useState(initialModules);
+  LogBox.ignoreLogs(['Non-serialized values were found in the navigation state']);
 
   
-  const handleSelect = (module) => navigation.navigate('ModuleViewScreen', { module })
+  const gotoViewScreen = (module) => navigation.navigate('ModuleViewScreen', { module, onDelete });
+  const gotoAddScreen = () => navigation.navigate('ModuleAddScreen', {onAdd});
 
   const handleDelete = (module) => {
     setModules(modules.filter((item) => item.ModuleID !== module.ModuleID));
@@ -25,9 +28,24 @@ const ModuleListScreen = ({navigation}) => {
     
   };
 
+  const onDelete = (module) => {
+    handleDelete(module);
+    navigation.goBack();
+  }
+
+  const onAdd = (module) => {
+    handleAdd(module);
+    navigation.goBack();
+  }
+
+  const handleAdd = (module) => setModules([...modules, module])
+
 
   return (
     <Screen>
+      <ButtonTray>
+        <Button label='Add' onClick={gotoAddScreen} />
+      </ButtonTray>
       <ScrollView style={styles.container}>
       {
         initialModules.map((module) => (
@@ -55,3 +73,5 @@ const styles = StyleSheet.create({
 
 
 export default ModuleListScreen;
+
+
