@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import ModuleView from '../../modules/ModuleList';
+import Screen from '../layouts/Screen';
+import ModuleView from '../../modules/ModuleView';
 
 const ModuleViewScreen = ({navigate, route}) => {
 

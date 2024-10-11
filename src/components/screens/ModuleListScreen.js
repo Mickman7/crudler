@@ -43,14 +43,14 @@ const ModuleListScreen = ({navigation}) => {
 
   return (
     <Screen>
+      <ScrollView style={styles.container}>
       <ButtonTray>
         <Button label='Add' onClick={gotoAddScreen} />
       </ButtonTray>
-      <ScrollView style={styles.container}>
       {
         initialModules.map((module) => (
           // <ModuleItem module={module} onSelect={() => handleDelete(module)} />
-          <ModuleItem key={module.ModuleID} module={module} onSelect={() => handleSelect(module)} />
+          <ModuleItem key={module.ModuleID} module={module} onSelect={() => gotoViewScreen(module)} />
 
         ))
       }
@@ -60,7 +60,9 @@ const ModuleListScreen = ({navigation}) => {
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    padding: 10,
+  },
   item: {
     paddingVertical: 15,
     borderBottomWidth: 1,
@@ -68,7 +70,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-  }
+  },
 });
 
 

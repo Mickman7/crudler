@@ -1,7 +1,7 @@
 import React from 'react'
 import { Alert, StyleSheet, View, Text } from 'react-native';
 import FullWidthImage from 'react-native-fullwidth-image';
-import {Button, ButtonTray} from '../UI/Button';
+import {Button, ButtonTray} from '../components/UI/Button';
 
 
 
@@ -13,6 +13,8 @@ const ModuleView = ({module, onDelete}) => {
         `Are you sure you want to delete module ${module.ModuleCode} ${module.ModuleName}`,
         [{text: 'Cancel'}, {text: 'Delete', onPress: handleDelete}]
     );
+
+    const handleDelete = () => onDelete(module);
 
 
   return (

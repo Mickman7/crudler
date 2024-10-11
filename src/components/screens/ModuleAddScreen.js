@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Icons from '../UI/Icons';
 import {Button, ButtonTray} from '../UI/Button';
@@ -18,7 +17,10 @@ export default function ModuleAddScreen({navigation, route}) {
 
   const { onAdd } = route.params;
 
-  const handleAdd = () => onAdd(defaultModule);
+  const handleAdd = () => {
+    onAdd(defaultModule);
+
+  }
   const handleCancel = navigation.goBack;
 
   return (
@@ -36,7 +38,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 10,
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
 });
