@@ -7,8 +7,6 @@ import { useState } from 'react';
 import Icons from '../UI/Icons.js'
 import { Button, ButtonTray, uttonTray } from '../UI/Button.js'
 
-// console.log(initialModules[0].ModuleCode)
-
 
 // const modules = initialModules;
 
@@ -20,7 +18,7 @@ const ModuleListScreen = ({navigation}) => {
 
   
   const gotoViewScreen = (module) => navigation.navigate('ModuleViewScreen', { module, onDelete });
-  const gotoAddScreen = () => navigation.navigate('ModuleAddScreen', {onAdd});
+  const gotoAddScreen = () => navigation.navigate('ModuleAddScreen', { onAdd });
 
   const handleDelete = (module) => {
     setModules(modules.filter((item) => item.ModuleID !== module.ModuleID));
@@ -39,6 +37,9 @@ const ModuleListScreen = ({navigation}) => {
   }
 
   const handleAdd = (module) => setModules([...modules, module])
+  const handleModify = (updateModule) => setModules(
+    modules.map((module) => (module.ModuleID === U))
+  );
 
 
   return (
@@ -48,7 +49,7 @@ const ModuleListScreen = ({navigation}) => {
         <Button label='Add' onClick={gotoAddScreen} />
       </ButtonTray>
       {
-        initialModules.map((module) => (
+        modules.map((module) => (
           // <ModuleItem module={module} onSelect={() => handleDelete(module)} />
           <ModuleItem key={module.ModuleID} module={module} onSelect={() => gotoViewScreen(module)} />
 

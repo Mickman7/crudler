@@ -3,24 +3,11 @@ import Screen from '../layouts/Screen';
 import ModuleForm from '../../modules/ModuleForm';
 
 
-const defaultModule = {
-  ModuleID: null,
-  ModuleName: null,
-  ModuleCode: null,
-  ModuleLevel: null,
-  ModuleLeaderID: null,
-  ModuleLeaderName: null,
-  ModuleImage:'https://images.freeimages.com/images/small-previews/cf5/cellphone-1313194.jpg',
-};
-
-
 
 
 export default function ModuleAddScreen({navigation, route}) {
 
   const { onAdd } = route.params;
-
- 
 
 
   const handleCancel = navigation.goBack;
