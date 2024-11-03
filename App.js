@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import  ModuleListScreen  from '../crudler/src/components/screens/ModuleListScreen';
@@ -11,7 +12,12 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='ModuleListScreen'>
+      <StatusBar style='light'/>
+
+      <Stack.Navigator initialRouteName='ModuleListScreen' screenOptions={{
+        headerStyle: {backgroundColor: 'black'},
+        headerTintColor: 'white',
+      }}>
         <Stack.Screen name='ModuleListScreen' component={ModuleListScreen} options={{title: 'List Modules'}}>
         </Stack.Screen >
 
