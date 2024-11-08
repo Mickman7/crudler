@@ -20,7 +20,7 @@ const Form = ({children, onSubmit, onCancel, submitLabel, submitIcon}) => {
 
 const InputText = ({label, value, onChange}) => {
     return(
-        <View style={styles.container}>
+        <View style={styles.item}>
             <Text style={styles.itemLabel}>{label}</Text>
             <TextInput 
                 value={value} 
@@ -44,8 +44,8 @@ const InputSelect = ({label, prompt, options, value, onChange}) => {
             >
                 <Picker.Item value={null} label={prompt} style={styles.itemPickerPromptStyle} />
                 {
-                    options.map((options, index) => (
-                        <Picker.Item key={index} value={options.value} label={options.label}/>
+                    options.map((option, index) => (
+                    <Picker.Item key={index} value={option.value} label={option.label}/>
                     ))
                 }
 
@@ -60,6 +60,13 @@ Form.InputSelect = InputSelect;
 
 
 const styles = StyleSheet.create({
+    formContainer: {
+        gap: 10,
+        padding: 10,
+    },
+    formItem: {
+        gap: 5,
+    },
     itemLabel: {
       color: 'grey',
       fontSize: 16,
@@ -73,13 +80,6 @@ const styles = StyleSheet.create({
       borderRadius: 7,
       borderWidth: 1,
       borderColor: 'lightgray',
-    },
-    formContainer: {
-        gap: 10,
-        padding: 10,
-    },
-    formItem: {
-        gap: 5,
     },
     itemPickerStyle: {
         height: 50,

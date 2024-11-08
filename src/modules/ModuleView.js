@@ -5,7 +5,7 @@ import {Button, ButtonTray} from '../components/UI/Button';
 
 
 
-const ModuleView = ({module, onDelete}) => {
+const ModuleView = ({module, onDelete, onModify}) => {
 
 
     const requestDelete = () => Alert.alert(
@@ -29,7 +29,7 @@ const ModuleView = ({module, onDelete}) => {
     </View>
 
     <ButtonTray>
-      <Button label='Modify'/>
+      <Button label='Modify' onClick={onModify}/>
       <Button label='Delete' onClick={requestDelete}/>
     </ButtonTray>
     

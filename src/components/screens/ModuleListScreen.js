@@ -17,7 +17,7 @@ const ModuleListScreen = ({navigation}) => {
   LogBox.ignoreLogs(['Non-serialized values were found in the navigation state']);
 
   
-  const gotoViewScreen = (module) => navigation.navigate('ModuleViewScreen', { module, onDelete });
+  const gotoViewScreen = (module) => navigation.navigate('ModuleViewScreen', { module, onDelete, onModify });
   const gotoAddScreen = () => navigation.navigate('ModuleAddScreen', { onAdd });
 
   const handleDelete = (module) => {
@@ -36,9 +36,16 @@ const ModuleListScreen = ({navigation}) => {
     navigation.goBack();
   }
 
-  const handleAdd = (module) => setModules([...modules, module])
-  const handleModify = (updateModule) => setModules(
-    modules.map((module) => (module.ModuleID === U))
+  const onModify = (module) => {
+    handleModify(module);
+    navigation.navigate("ModuleListScreen");
+  }
+
+  const handleAdd = (module) => setModules([...modules, module]);
+
+
+  const handleModify = (updatedModule) => setModules(
+    modules.map((module) => (module.ModuleID === updatedModule.ModuleID) ? updatedModule : module)
   );
 
 

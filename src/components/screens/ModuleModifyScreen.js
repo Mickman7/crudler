@@ -1,11 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import ModuleForm from '../../modules/ModuleForm';
 
-export default function ModuleModifyScreen() {
+const ModuleModifyScreen = ({navigation, route}) => {
+
+  const {module, onModify} = route.params;
+;
+  const handleCancel = () => navigation.goBack();
   return (
     <View style={styles.container}>
-      <Text>Modify</Text>
-      <StatusBar style="auto" />
+      <ModuleForm originalModule={module} onSubmit={onModify} onCancel={handleCancel}/>
     </View>
   );
 }
@@ -18,3 +22,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default ModuleModifyScreen;

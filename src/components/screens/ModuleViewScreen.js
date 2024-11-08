@@ -3,13 +3,15 @@ import { StyleSheet, Text, View } from 'react-native';
 import Screen from '../layouts/Screen';
 import ModuleView from '../../modules/ModuleView';
 
-const ModuleViewScreen = ({navigate, route}) => {
+const ModuleViewScreen = ({navigation, route}) => {
 
-  const { module, onDelete } = route.params;
+  const { module, onDelete, onModify } = route.params;
+
+  const gotoModifyScreen = () => navigation.navigate("ModuleModifyScreen", {module, onModify});
 
   return (
     <Screen>
-      <ModuleView module={module} onDelete={onDelete}/>
+      <ModuleView module={module} onDelete={onDelete} onModify={gotoModifyScreen}/>
     </Screen>
   );
 }
